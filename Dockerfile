@@ -1,8 +1,9 @@
 FROM tensorflow/serving
 COPY ./serving_model_dir/ /models/cc-model/
-
+COPY ./config /model_config
 # Mengatur environment variable untuk TensorFlow Serving
 ENV MODEL_NAME=cc-model
+ENV MONITORING_CONFIG="/model_config/prometheus.config"
 ENV REST_API_PORT=8501
 
 # Ekspose port yang akan digunakan
